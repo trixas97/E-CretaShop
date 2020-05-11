@@ -7,11 +7,15 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Insert;
 import androidx.room.Room;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,9 +27,17 @@ public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     DrawerLayout drawerLayout;
-    NavigationView navigationView;
+    NavigationView navigationView, navigationCart;
     ActionBarDrawerToggle toggle;
     Fragment fragproducts, fragorders, fragcategories, fragstorage;
+    ImageView carticon;
+    List<Product> products;
+
+    private CategoryExtraItem catattr;
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
+    private ProductsRecyclerAdapter adapter;
+
     public static FragmentManager fragmentManager;
     public static DatabaseShop Database;
 
@@ -43,10 +55,21 @@ public class MainActivity extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_View);
+        navigationCart = findViewById(R.id.navigation_cart);
 
         toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.drawer_open,R.string.drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+
+        carticon = findViewById(R.id.cart_icon);
+
+        carticon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(findViewById(R.id.navigation_cart));
+            }
+        });
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -60,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.orders:
                         menuItem.setChecked(true);
                         displayMessage("Παραγγελίες");
-                        drawerLayout.closeDrawers();
                         return true;
                     case R.id.products:
                         menuItem.setChecked(true);
@@ -79,8 +101,52 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//        navigationCart.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+//                switch (menuItem.getItemId()){
+//                    case R.id.customers:
+//                        menuItem.setChecked(true);
+//                        displayMessage("Πελάτες");
+//                        drawerLayout.closeDrawers();
+//                        return true;
+//                    case R.id.orders:
+//                        menuItem.setChecked(true);
+//                        displayMessage("Παραγγελίες");
+//                        drawerLayout.closeDrawers();
+//                        return true;
+//                    case R.id.products:
+//                        menuItem.setChecked(true);
+//                        displayMessage("Προιόντα");
+//                        fragmentManager.beginTransaction().replace(R.id.frag_layout, fragcategories).addToBackStack(null).commit();
+//                        drawerLayout.closeDrawers();
+//                        return true;
+//                    case R.id.storage:
+//                        menuItem.setChecked(true);
+//                        displayMessage("Αποθήκη");
+//                        fragmentManager.beginTransaction().replace(R.id.frag_layout, fragstorage).addToBackStack(null).commit();
+//                        drawerLayout.closeDrawers();
+//                        return true;
+//                }
+//                return false;
+//            }
+//        });
+
         Database = Room.databaseBuilder(getApplicationContext(),DatabaseShop.class,"cretashopDB").allowMainThreadQueries().build();
         getSupportFragmentManager().beginTransaction().replace(R.id.frag_layout, fragcategories).commit();
+
+        products = Database.myDao().getProducts();
+        recyclerView = findViewById(R.id.cart_recyclerview);
+        layoutManager = new LinearLayoutManager(MainActivity.this,LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        catattr = MainActivity.Database.myDao().getCategoryExtraItem(1);
+        adapter = new ProductsRecyclerAdapter(products,"Κρεατικά",catattr);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(adapter);
+
+
+
 
 
 //        Category category = new Category();
