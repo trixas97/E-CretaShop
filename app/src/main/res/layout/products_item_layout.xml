@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/prod_card"
+    android:layout_width="match_parent"
+    android:layout_height="190dp"
+    android:layout_margin="5dp"
+    cardview:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/prod_img"
+            android:layout_width="160dp"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:background="#2d2d2d"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/prod_const"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/prod_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="ProductName"
+                android:textColor="#2d2d2d"
+                cardview:layout_constraintTop_toTopOf="parent"
+                android:textSize="25sp"
+                android:gravity="center_horizontal"
+                android:textAlignment="center"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/prod_cat"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                cardview:layout_constraintLeft_toLeftOf="parent"
+                cardview:layout_constraintTop_toBottomOf="@id/prod_name"
+                android:text="Category Name"/>
+
+            <TextView
+                android:id="@+id/prod_hint_cat"
+                android:textColor="#2d2d2d"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                cardview:layout_constraintLeft_toLeftOf="parent"
+                cardview:layout_constraintTop_toBottomOf="@id/prod_cat"
+                android:text="Κατηγορία"/>
+
+            <TextView
+                android:id="@+id/prod_cat_attr"
+                android:textColor="@color/colorAccent"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                cardview:layout_constraintRight_toRightOf="parent"
+                cardview:layout_constraintTop_toBottomOf="@id/prod_name"
+                android:text="Χαρακτηριστικό"/>
+
+            <TextView
+                android:id="@+id/prod_hint_cat_attr"
+                android:textColor="#2d2d2d"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                cardview:layout_constraintRight_toRightOf="parent"
+                cardview:layout_constraintTop_toBottomOf="@id/prod_cat"
+                android:text="Όνομα χαρακτηριστικού"/>
+
+            <TextView
+                android:id="@+id/prod_mer_region"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                cardview:layout_constraintLeft_toLeftOf="parent"
+                cardview:layout_constraintTop_toBottomOf="@id/prod_hint_cat"
+                android:text="Region"/>
+
+            <TextView
+                android:id="@+id/prod_hint_mer_region"
+                android:textColor="#2d2d2d"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                cardview:layout_constraintLeft_toLeftOf="parent"
+                cardview:layout_constraintTop_toBottomOf="@id/prod_mer_region"
+                android:text="Τόπος Προέλευσης"/>
+
+            <TextView
+                android:id="@+id/prod_mer"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                cardview:layout_constraintRight_toRightOf="parent"
+                cardview:layout_constraintTop_toBottomOf="@id/prod_hint_cat_attr"
+                android:text="Merchant"/>
+
+            <TextView
+                android:id="@+id/prod_hint_mer"
+                android:textColor="#2d2d2d"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                cardview:layout_constraintRight_toRightOf="parent"
+                cardview:layout_constraintTop_toBottomOf="@id/prod_mer"
+                android:text="Προμηθευτής"/>
+
+            <TextView
+                android:id="@+id/prod_id"
+                android:textColor="#2d2d2d"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                cardview:layout_constraintLeft_toLeftOf="parent"
+                cardview:layout_constraintBottom_toBottomOf="parent"
+                android:text="PER.1"/>
+
+            <TextView
+                android:id="@+id/prod_price"
+                android:layout_width="110dp"
+                android:layout_height="40dp"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="center_horizontal"
+                android:textAlignment="center"
+                android:text="10€"
+                android:textColor="#fff"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                cardview:layout_constraintBottom_toBottomOf="parent"
+                cardview:layout_constraintRight_toRightOf="parent" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
