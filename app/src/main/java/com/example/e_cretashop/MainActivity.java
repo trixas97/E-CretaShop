@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private CategoryExtraItem catattr;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    private ProductsRecyclerAdapter adapter;
+    private CartRecyclerAdapter adapter;
 
     public static FragmentManager fragmentManager;
     public static DatabaseShop Database;
@@ -141,14 +141,14 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         catattr = MainActivity.Database.myDao().getCategoryExtraItem(1);
-        adapter = new ProductsRecyclerAdapter(products,"Κρεατικά",catattr);
+        adapter = new CartRecyclerAdapter(products);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
 
 
 
 
-
+//
 //        Category category = new Category();
 //        category.setName("Κρεατικά");
 //        category.setImg(R.drawable.kreata);
