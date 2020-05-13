@@ -149,19 +149,26 @@ public class MainActivity extends AppCompatActivity {
 
 
 //
+//
 //        Category category = new Category();
-//        category.setName("Κρεατικά");
-//        category.setImg(R.drawable.kreata);
-//        Database.myDao().insertCategory(category);
 //        category.setName("Τυροκομικά");
 //        category.setImg(R.drawable.tyria);
 //        Database.myDao().insertCategory(category);
+//        category.setName("Κρεατικά");
+//        category.setImg(R.drawable.kreata);
+//        Database.myDao().insertCategory(category);
+//        category.setName("Ελαιόλαδα");
+//        category.setImg(R.drawable.eleolado);
+//        Database.myDao().insertCategory(category);
+//        category.setName("Κρασιά");
+//        category.setImg(R.drawable.krasia);
+//        Database.myDao().insertCategory(category);
 //
 //        CategoryExtraItem extraItem = new CategoryExtraItem();
-//        extraItem.setCategory_id(1);
+//        extraItem.setCategory_id(2);
 //        extraItem.setName("Μέρος Κρέατος");
 //        Database.myDao().insertCategoryExtraItem(extraItem);
-//        extraItem.setCategory_id(2);
+//        extraItem.setCategory_id(1);
 //        extraItem.setName("Είδος Τυριού");
 //        Database.myDao().insertCategoryExtraItem(extraItem);
 //
@@ -182,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
 //        Database.myDao().insertMerchant(merchant);
 //
 //        Product product = new Product();
-//        product.setCategory_id(2);
+//        product.setCategory_id(1);
 //        product.setMerchant_id(1);
 //        product.setName("Μυζήθρα");
 //        product.setAttribute("Άσπρο");
@@ -191,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
 //        product.setImg(R.drawable.xynomyzithra);
 //        Database.myDao().insertProduct(product);
 //
-//        product.setCategory_id(1);
+//        product.setCategory_id(2);
 //        product.setMerchant_id(2);
 //        product.setName("Αρνί");
 //        product.setAttribute("Κεφάλι");
@@ -200,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
 //        product.setImg(R.drawable.arni);
 //        Database.myDao().insertProduct(product);
 //
-//        product.setCategory_id(2);
+//        product.setCategory_id(1);
 //        product.setMerchant_id(2);
 //        product.setName("Γραβιέρα");
 //        product.setAttribute("Κίτρινο");
@@ -209,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
 //        product.setImg(R.drawable.grabiera);
 //        Database.myDao().insertProduct(product);
 //
-//        product.setCategory_id(1);
+//        product.setCategory_id(2);
 //        product.setMerchant_id(1);
 //        product.setName("Κουνέλι");
 //        product.setAttribute("Ολόκληρο");
