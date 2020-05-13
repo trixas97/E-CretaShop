@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
@@ -29,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView, navigationCart;
     ActionBarDrawerToggle toggle;
-    Fragment fragproducts, fragorders, fragcategories, fragstorage;
+    Fragment fragproducts, fragorders, fragcategories, fragstorage, fragcart;
+    FloatingActionButton flb;
     ImageView carticon;
     List<Product> products;
 
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
         fragcategories = new CategoriesFragment();
         fragstorage = new StorageFragment();
+        fragcart = new CartFragment();
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -144,6 +147,17 @@ public class MainActivity extends AppCompatActivity {
         adapter = new CartRecyclerAdapter(products);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
+
+        flb = findViewById(R.id.navigation_cart_fabcheck);
+
+        flb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentManager.beginTransaction().replace(R.id.frag_layout, fragcart).addToBackStack(null).commit();
+                drawerLayout.closeDrawers();
+            }
+        });
+
 
 
 
