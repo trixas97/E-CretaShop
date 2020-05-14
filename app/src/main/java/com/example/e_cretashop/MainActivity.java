@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView, navigationCart;
     ActionBarDrawerToggle toggle;
-    Fragment fragproducts, fragorders, fragcategories, fragstorage, fragcart;
+    Fragment fragproducts, fragorders, fragcategories, fragstorage, fragmerchants, fragcart;
     FloatingActionButton flb;
     ImageView carticon;
     List<Product> products;
@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
         fragcategories = new CategoriesFragment();
         fragstorage = new StorageFragment();
+        fragmerchants = new MerchantFragment();
         fragcart = new CartFragment();
 
         toolbar = findViewById(R.id.toolbar);
@@ -78,6 +79,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
+                    case R.id.merchants:
+                        menuItem.setChecked(true);
+                        displayMessage("Έμποροι");
+                        fragmentManager.beginTransaction().replace(R.id.frag_layout, fragmerchants).addToBackStack(null).commit();
+                        drawerLayout.closeDrawers();
+                        return true;
                     case R.id.customers:
                         menuItem.setChecked(true);
                         displayMessage("Πελάτες");
@@ -104,36 +111,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        navigationCart.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-//                switch (menuItem.getItemId()){
-//                    case R.id.customers:
-//                        menuItem.setChecked(true);
-//                        displayMessage("Πελάτες");
-//                        drawerLayout.closeDrawers();
-//                        return true;
-//                    case R.id.orders:
-//                        menuItem.setChecked(true);
-//                        displayMessage("Παραγγελίες");
-//                        drawerLayout.closeDrawers();
-//                        return true;
-//                    case R.id.products:
-//                        menuItem.setChecked(true);
-//                        displayMessage("Προιόντα");
-//                        fragmentManager.beginTransaction().replace(R.id.frag_layout, fragcategories).addToBackStack(null).commit();
-//                        drawerLayout.closeDrawers();
-//                        return true;
-//                    case R.id.storage:
-//                        menuItem.setChecked(true);
-//                        displayMessage("Αποθήκη");
-//                        fragmentManager.beginTransaction().replace(R.id.frag_layout, fragstorage).addToBackStack(null).commit();
-//                        drawerLayout.closeDrawers();
-//                        return true;
-//                }
-//                return false;
-//            }
-//        });
 
         Database = Room.databaseBuilder(getApplicationContext(),DatabaseShop.class,"cretashopDB").allowMainThreadQueries().build();
         getSupportFragmentManager().beginTransaction().replace(R.id.frag_layout, fragcategories).commit();

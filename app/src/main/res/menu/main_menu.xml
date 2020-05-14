@@ -18,6 +18,11 @@
             android:title="Αποθήκη">
         </item>
         <item
+            android:id="@+id/merchants"
+            android:icon="@drawable/customers_pic"
+            android:title="Έμποροι">
+        </item>
+        <item
             android:id="@+id/customers"
             android:icon="@drawable/customers_pic"
             android:title="Πελάτες">

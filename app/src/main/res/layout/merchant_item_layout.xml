@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mer_card"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_margin="5dp"
+    cardview:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/mer_img"
+            android:layout_width="125dp"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+
+            android:src="@drawable/merchant_img"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mer_const"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+            <TextView
+                android:id="@+id/mer_id"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                cardview:layout_constraintLeft_toLeftOf="@id/mer_hint_id"
+                cardview:layout_constraintRight_toRightOf="@id/mer_hint_id"
+                cardview:layout_constraintTop_toTopOf="parent"
+                android:text="1"/>
+
+            <TextView
+                android:id="@+id/mer_hint_id"
+                android:textColor="#2d2d2d"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                cardview:layout_constraintLeft_toLeftOf="parent"
+                cardview:layout_constraintTop_toBottomOf="@id/mer_id"
+                android:text="Αναγνωριστικό"/>
+
+            <TextView
+                android:id="@+id/mer_region"
+                android:textColor="@color/colorAccent"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                cardview:layout_constraintRight_toRightOf="parent"
+                cardview:layout_constraintTop_toTopOf="parent"
+                android:text="Χανιά"/>
+
+            <TextView
+                android:id="@+id/mer_hint_regionr"
+                android:textColor="#2d2d2d"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:layout_marginRight="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                cardview:layout_constraintRight_toRightOf="parent"
+                cardview:layout_constraintTop_toBottomOf="@id/mer_region"
+                android:text="Έδρα"/>
+
+            <TextView
+                android:id="@+id/mer_surname"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                cardview:layout_constraintLeft_toLeftOf="parent"
+                cardview:layout_constraintBottom_toBottomOf="parent"
+                android:text="Επίθετο"/>
+
+            <TextView
+                android:id="@+id/mer_hint_surname"
+                android:textColor="#2d2d2d"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                cardview:layout_constraintLeft_toLeftOf="parent"
+                cardview:layout_constraintTop_toBottomOf="@id/mer_surname"
+                android:text="Επίθετο"/>
+
+            <TextView
+                android:id="@+id/mer_name"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                cardview:layout_constraintRight_toRightOf="parent"
+                cardview:layout_constraintBottom_toBottomOf="parent"
+                android:text="Όνομα"/>
+
+            <TextView
+                android:id="@+id/mer_hint_name"
+                android:textColor="#2d2d2d"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:layout_marginRight="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                cardview:layout_constraintRight_toRightOf="parent"
+                cardview:layout_constraintTop_toBottomOf="@id/mer_name"
+                android:text="Όνομα"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
