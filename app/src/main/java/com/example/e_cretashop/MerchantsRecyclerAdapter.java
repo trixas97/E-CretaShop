@@ -16,7 +16,7 @@ import java.util.TreeMap;
 
 public class MerchantsRecyclerAdapter extends RecyclerView.Adapter<MerchantsRecyclerAdapter.MyViewHolder> {
     private List<Merchant> list;
-    private Fragment fragmerchant;
+    private Fragment fragmercust;
     private Region region;
 
 
@@ -37,18 +37,17 @@ public class MerchantsRecyclerAdapter extends RecyclerView.Adapter<MerchantsRecy
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
 
         region = MainActivity.Database.myDao().getRegion(list.get(position).getRegion_id());
-
         holder.merchantname.setText(list.get(position).getName());
         holder.merchantsurname.setText(list.get(position).getSurname());
         holder.merchantregion.setText(region.getName());
         holder.merchantid.setText( list.get(position).getId() +"");
-//        holder.cardView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                fragproduct = new ProductFragment(list.get(position), catname, catattr);
-//                MainActivity.fragmentManager.beginTransaction().replace(R.id.frag_layout, fragproduct).addToBackStack(null).commit();
-//            }
-//        });
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmercust = new MerchantFragment(list.get(position));
+                MainActivity.fragmentManager.beginTransaction().replace(R.id.frag_layout, fragmercust).addToBackStack(null).commit();
+            }
+        });
     }
 
     //return productsList elements count

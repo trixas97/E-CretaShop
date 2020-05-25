@@ -48,7 +48,7 @@ public class ProductsRecyclerAdapter extends RecyclerView.Adapter<ProductsRecycl
         holder.productcat.setText(catname);
         holder.productcatattr.setText(list.get(position).getAttribute());
         holder.productcatattrname.setText(catattr.getName());
-        holder.productmername.setText(merchant.getName());
+        holder.productmername.setText(merchant.getSurname());
         holder.productmerregion.setText(region.getName());
         holder.productid.setText("PER." + list.get(position).getId());
         holder.productprice.setText(list.get(position).getPrice() + "€");

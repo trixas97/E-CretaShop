@@ -23,7 +23,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/merchantif_name"
+                android:id="@+id/merchantif_fullname"
                 android:layout_marginTop="15px"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
                 android:textAlignment="center"
                 android:layout_gravity="center_horizontal"
                 android:textStyle="bold"
-                android:text="@string/hello_blank_fragment" />
+                android:text="Ονοματεπώνυμο" />
 
             <ImageView
                 android:id="@+id/merchantif_img"
@@ -40,7 +40,9 @@
                 android:layout_height="150dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_name"/>
+                android:layout_marginTop="10dp"
+                android:src="@drawable/merchant_img"
+                app:layout_constraintTop_toBottomOf="@id/merchantif_fullname"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -52,7 +54,7 @@
         app:layout_constraintTop_toBottomOf="@id/merchantif_cardview1"
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
-        android:layout_height="260dp">
+        android:layout_height="320dp">
         <!-- TODO: Update blank fragment layout -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/merchantif_const_cardview2"
@@ -88,7 +90,7 @@
                 android:layout_height="25dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/merchantif_textview1_cardview2"
-                android:text="Κρεατικά"/>
+                android:text="Id"/>
 
             <TextView
                 android:id="@+id/merchantif_hint_id"
@@ -106,7 +108,7 @@
                 android:text="Αναγνωριστικό"/>
 
             <TextView
-                android:id="@+id/merchantif_mer_name"
+                android:id="@+id/merchantif_phone"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -118,10 +120,10 @@
                 android:layout_height="25dp"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/merchantif_textview1_cardview2"
-                android:text="Τρίχας"/>
+                android:text="Τηλέφωνο"/>
 
             <TextView
-                android:id="@+id/merchantif_hint_mer_name"
+                android:id="@+id/merchantif_hint_phone"
                 android:textColor="#2d2d2d"
                 android:textSize="13sp"
                 android:textStyle="bold"
@@ -129,44 +131,44 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="@id/merchantif_mer_name"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_mer_name"
+                app:layout_constraintLeft_toLeftOf="@id/merchantif_phone"
+                app:layout_constraintTop_toBottomOf="@id/merchantif_phone"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:text="Έδρα"/>
+
+            <TextView
+                android:id="@+id/merchantif_surname"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_width="150dp"
+                android:textAlignment="center"
+                android:gravity="center_horizontal"
+                android:layout_height="25dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/merchantif_hint_id"
+                android:text="Επίθετο"/>
+
+            <TextView
+                android:id="@+id/merchantif_hint_surname"
+                android:textColor="#2d2d2d"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="@id/merchantif_surname"
+                app:layout_constraintTop_toBottomOf="@id/merchantif_surname"
                 android:textAlignment="center"
                 android:gravity="center_horizontal"
                 android:text="Επίθετο"/>
 
             <TextView
-                android:id="@+id/merchantif_cat_attr"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp"
-                android:layout_width="150dp"
-                android:textAlignment="center"
-                android:gravity="center_horizontal"
-                android:layout_height="25dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_hint_cat"
-                android:text="Κεφάλι"/>
-
-            <TextView
-                android:id="@+id/merchantif_hint_cat_attr"
-                android:textColor="#2d2d2d"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="@id/merchantif_cat_attr"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_cat_attr"
-                android:textAlignment="center"
-                android:gravity="center_horizontal"
-                android:text="Μέρος Κρέατος"/>
-
-            <TextView
-                android:id="@+id/merchantif_mer_phone"
+                android:id="@+id/merchantif_name"
                 android:textColor="@color/colorAccent"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -177,11 +179,11 @@
                 android:layout_width="150dp"
                 android:layout_height="25dp"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_hint_mer_name"
-                android:text="0123456789"/>
+                app:layout_constraintTop_toBottomOf="@id/merchantif_hint_phone"
+                android:text="Όνομα"/>
 
             <TextView
-                android:id="@+id/merchantif_hint_mer_phone"
+                android:id="@+id/merchantif_hint_name"
                 android:textColor="#2d2d2d"
                 android:textSize="13sp"
                 android:textStyle="bold"
@@ -189,14 +191,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="@id/merchantif_mer_phone"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_mer_phone"
+                app:layout_constraintLeft_toLeftOf="@id/merchantif_name"
+                app:layout_constraintTop_toBottomOf="@id/merchantif_name"
                 android:textAlignment="center"
                 android:gravity="center_horizontal"
-                android:text="Τηλέφωνο"/>
+                android:text="Όνομα"/>
 
             <TextView
-                android:id="@+id/merchantif_date"
+                android:id="@+id/merchantif_region"
                 android:textColor="@color/colorAccent"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -207,11 +209,11 @@
                 android:gravity="center_horizontal"
                 android:layout_height="25dp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_hint_cat_attr"
-                android:text="01/02/2020"/>
+                app:layout_constraintTop_toBottomOf="@id/merchantif_hint_surname"
+                android:text="Περιοχή"/>
 
             <TextView
-                android:id="@+id/merchantif_hint_date"
+                android:id="@+id/merchantif_hint_region"
                 android:textColor="#2d2d2d"
                 android:textSize="13sp"
                 android:textStyle="bold"
@@ -219,14 +221,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="@id/merchantif_date"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_date"
+                app:layout_constraintRight_toRightOf="@id/merchantif_region"
+                app:layout_constraintTop_toBottomOf="@id/merchantif_region"
                 android:textAlignment="center"
                 android:gravity="center_horizontal"
-                android:text="Ημερομηνία Παραγωγής"/>
+                android:text="Περιοχή"/>
 
             <TextView
-                android:id="@+id/merchantif_mer_region"
+                android:id="@+id/merchantif_address"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -237,8 +239,8 @@
                 android:layout_width="150dp"
                 android:layout_height="25dp"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_hint_mer_phone"
-                android:text="Χανιά"/>
+                app:layout_constraintTop_toBottomOf="@id/merchantif_hint_name"
+                android:text="Διεύθυνση"/>
 
             <TextView
                 android:id="@+id/merchantif_hint_mer_region"
@@ -249,29 +251,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="@id/merchantif_mer_region"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_mer_region"
+                app:layout_constraintLeft_toLeftOf="@id/merchantif_address"
+                app:layout_constraintTop_toBottomOf="@id/merchantif_address"
                 android:textAlignment="center"
                 android:gravity="center_horizontal"
-                android:text="Έδρα"/>
+                android:text="Διεύθυνση"/>
 
             <TextView
-                android:id="@+id/merchantif_cat_attr"
-                android:textColor="@color/colorPrimary"
+                android:id="@+id/merchantif_email"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="25dp"
                 android:layout_width="150dp"
                 android:textAlignment="center"
                 android:gravity="center_horizontal"
                 android:layout_height="25dp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_hint_cat"
-                android:text="Κεφάλι"/>
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/merchantif_hint_region"
+                android:text="Email"/>
 
             <TextView
-                android:id="@+id/merchantif_hint_cat_attr"
+                android:id="@+id/merchantif_hint_email"
                 android:textColor="#2d2d2d"
                 android:textSize="13sp"
                 android:textStyle="bold"
@@ -279,42 +281,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="@id/merchantif_cat_attr"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_cat_attr"
-                android:textAlignment="center"
-                android:gravity="center_horizontal"
-                android:text="Μέρος Κρέατος"/>
-
-            <TextView
-                android:id="@+id/merchantif_mer_phone"
-                android:textColor="@color/colorAccent"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:gravity="center_horizontal"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="15dp"
-                android:layout_width="150dp"
-                android:layout_height="25dp"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_hint_mer_name"
-                android:text="0123456789"/>
-
-            <TextView
-                android:id="@+id/merchantif_hint_mer_phone"
-                android:textColor="#2d2d2d"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="@id/merchantif_mer_phone"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_mer_phone"
+                app:layout_constraintTop_toBottomOf="@id/merchantif_email"
                 android:textAlignment="center"
                 android:gravity="center_horizontal"
-                android:text="Τηλέφωνο"/>
-
+                android:text="Email"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -326,8 +297,28 @@
         android:layout_gravity="bottom|end"
         app:layout_constraintTop_toBottomOf="@id/merchantif_cardview2"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="150dp"
         android:layout_marginTop="30dp"
-        app:srcCompat="@drawable/add_cart" />
+        android:backgroundTint="#0cbb06"
+        app:borderWidth="0dp"
+        android:clickable="true"
+        app:rippleColor="@color/colorPrimary"
+        app:srcCompat="@drawable/edit" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/merchantif_deletefab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        app:layout_constraintTop_toBottomOf="@id/merchantif_cardview2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="150dp"
+        android:backgroundTint="#FF0000"
+        app:rippleColor="@color/colorAccent"
+        android:clickable="true"
+        android:layout_marginTop="30dp"
+        app:srcCompat="@drawable/delete" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
