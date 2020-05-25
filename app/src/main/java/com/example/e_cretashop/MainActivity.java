@@ -9,14 +9,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Insert;
 import androidx.room.Room;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -30,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     NavigationView navigationView, navigationCart;
     ActionBarDrawerToggle toggle;
-    Fragment fragproducts, fragorders, fragcategories, fragstorage, fragmerchants, fragcart;
+    Fragment fragproducts, fragorders, fragcustomers, fragcategories, fragstorage, fragmerchants, fragcart;
     FloatingActionButton flb;
     ImageView carticon;
     List<Product> products;
@@ -51,8 +49,9 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
         fragcategories = new CategoriesFragment();
         fragstorage = new StorageFragment();
-        fragmerchants = new MerchantFragment();
+        fragmerchants = new MerchantsFragment();
         fragcart = new CartFragment();
+        fragcustomers = new CustomerFragment();
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -88,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.customers:
                         menuItem.setChecked(true);
                         displayMessage("Πελάτες");
+                        fragmentManager.beginTransaction().replace(R.id.frag_layout, fragcustomers).addToBackStack(null).commit();
                         drawerLayout.closeDrawers();
                         return true;
                     case R.id.orders:
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-//
+
 //
 //        Category category = new Category();
 //        category.setName("Τυροκομικά");
@@ -170,13 +170,29 @@ public class MainActivity extends AppCompatActivity {
 //        Database.myDao().insertRegion(region);
 //
 //        Merchant merchant = new Merchant();
-//        merchant.setName("Τρίχας");
+//        merchant.setName("Μιχάλης");
+//        merchant.setSurname("Τριχάκης");
+//        merchant.setAddress("Παλαιλώνι Αποκωρόνου");
+//        merchant.setEmail("trixasmixas@gmail.com");
+//        merchant.setKind(0);
 //        merchant.setRegion_id(1);
 //        merchant.setPhone("6980374344");
 //        Database.myDao().insertMerchant(merchant);
 //        merchant.setPhone("6973321770");
-//        merchant.setName("Τζεμανός");
+//        merchant.setSurname("Τζεμανάκης");
+//        merchant.setAddress("Αρετής 2");
+//        merchant.setEmail("tzeman@gmail.com");
+//        merchant.setKind(0);
+//        merchant.setName("Μανώλης");
 //        merchant.setRegion_id(2);
+//        Database.myDao().insertMerchant(merchant);
+//        merchant.setName("Βασίλης");
+//        merchant.setSurname("Τριχάκης");
+//        merchant.setAddress("Νέο Χωριό Αποκωρόνου");
+//        merchant.setEmail("trixasbill@gmail.com");
+//        merchant.setKind(1);
+//        merchant.setRegion_id(1);
+//        merchant.setPhone("6980374344");
 //        Database.myDao().insertMerchant(merchant);
 //
 //        Product product = new Product();

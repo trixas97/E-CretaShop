@@ -39,7 +39,7 @@ public class MerchantsRecyclerAdapter extends RecyclerView.Adapter<MerchantsRecy
         region = MainActivity.Database.myDao().getRegion(list.get(position).getRegion_id());
 
         holder.merchantname.setText(list.get(position).getName());
-        holder.merchantsurname.setText(list.get(position).getName());
+        holder.merchantsurname.setText(list.get(position).getSurname());
         holder.merchantregion.setText(region.getName());
         holder.merchantid.setText( list.get(position).getId() +"");
 //        holder.cardView.setOnClickListener(new View.OnClickListener() {

@@ -50,8 +50,11 @@ public interface MyDao {
     @Query("select * from regions where id=:rid")
     public Region getRegion(int rid);
 
-    @Query("select * from merchants")
+    @Query("select * from merchants where kindid=0")
     public List<Merchant> getMerchants();
+
+    @Query("select * from merchants where kindid=1")
+    public List<Merchant> getCustomers();
 
     @Query("select * from merchants where id=:mid")
     public Merchant getMerchantProduct(int mid);

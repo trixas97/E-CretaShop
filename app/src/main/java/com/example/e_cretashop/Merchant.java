@@ -18,6 +18,12 @@ public class Merchant {
     @PrimaryKey(autoGenerate = true) @ColumnInfo (name = "id")
     private int id;
 
+    @ColumnInfo (name = "kindid")
+    private int kind;
+
+    @ColumnInfo (name = "surname")
+    private String surname;
+
     @ColumnInfo (name = "name")
     private String name;
 
@@ -29,6 +35,13 @@ public class Merchant {
 
     @ColumnInfo (name = "rid")
     private int region_id;
+
+    @ColumnInfo (name = "address")
+    private String address;
+
+    public String getSurname() { return surname; }
+
+    public void setSurname(String surname) { this.surname = surname; }
 
     public int getId() {
         return id;
@@ -69,4 +82,12 @@ public class Merchant {
     public void setRegion_id(int region_id) {
         this.region_id = region_id;
     }
+
+    public int getKind() { return kind; }
+
+    public void setKind(int kind) { this.kind = kind; }
+
+    public String getAddress() { return address; }
+
+    public void setAddress(String address) { this.address = address; }
 }
