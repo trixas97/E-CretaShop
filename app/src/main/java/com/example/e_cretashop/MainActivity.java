@@ -168,6 +168,10 @@ public class MainActivity extends AppCompatActivity {
 //        Database.myDao().insertRegion(region);
 //        region.setName("Ρέθυμνο");
 //        Database.myDao().insertRegion(region);
+//        region.setName("Ηράκλειο");
+//        Database.myDao().insertRegion(region);
+//        region.setName("Λασίθι");
+//        Database.myDao().insertRegion(region);
 //
 //        Merchant merchant = new Merchant();
 //        merchant.setName("Μιχάλης");

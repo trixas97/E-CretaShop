@@ -29,8 +29,20 @@ public interface MyDao {
     @Update
     public void updateCategory(Category category);
 
+    @Update
+    public void updateMerchant(Merchant merchant);
+
+    @Update
+    public void updateProduct(Product product);
+
+    @Delete
+    public void deleteProduct(Product product);
+
     @Delete
     public void deleteCategory(Category category);
+
+    @Delete
+    public void deleteMerchant(Merchant merchant);
 
     @Query("select * from categories")
     public List<Category> getCategories();

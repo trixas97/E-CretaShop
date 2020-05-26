@@ -4,18 +4,18 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".MerchantFragment"
+    tools:context=".StorageProductFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/merchantif_cardview1"
+        android:id="@+id/storageif_cardview1"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <!-- TODO: Update blank fragment layout -->
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/merchantif_const_cardview1"
+            android:id="@+id/storageif_const_cardview1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffff"
@@ -23,7 +23,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/merchantif_fullname"
+                android:id="@+id/storageif_name"
                 android:layout_marginTop="85px"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -32,17 +32,17 @@
                 android:textAlignment="center"
                 android:layout_gravity="center_horizontal"
                 android:textStyle="bold"
-                android:text="Ονοματεπώνυμο" />
+                android:text="Όνομα" />
 
             <ImageView
-                android:id="@+id/merchantif_img"
+                android:id="@+id/storageif_img"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 android:layout_marginTop="30dp"
                 android:src="@drawable/merchant_img"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_fullname"/>
+                app:layout_constraintTop_toBottomOf="@id/storageif_name"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -50,14 +50,14 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/merchantif_cardview2"
-        app:layout_constraintTop_toBottomOf="@id/merchantif_cardview1"
+        android:id="@+id/storageif_cardview2"
+        app:layout_constraintTop_toBottomOf="@id/storageif_cardview1"
         android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="320dp">
         <!-- TODO: Update blank fragment layout -->
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/merchantif_const_cardview2"
+            android:id="@+id/storageif_const_cardview2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ffff"
@@ -66,7 +66,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/merchantif_textview1_cardview2"
+                android:id="@+id/storageif_textview1_cardview2"
                 android:layout_width="match_parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
                 android:textColor = "@color/colorPrimaryDark"/>
 
             <TextView
-                android:id="@+id/merchantif_id"
+                android:id="@+id/storageif_id"
                 android:textColor="@color/colorAccent"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -89,11 +89,11 @@
                 android:layout_width="150dp"
                 android:layout_height="25dp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_textview1_cardview2"
+                app:layout_constraintTop_toBottomOf="@id/storageif_textview1_cardview2"
                 android:text="Id"/>
 
             <TextView
-                android:id="@+id/merchantif_hint_id"
+                android:id="@+id/storageif_hint_id"
                 android:textColor="#2d2d2d"
                 android:textSize="13sp"
                 android:textStyle="bold"
@@ -101,14 +101,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="@id/merchantif_id"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_id"
+                app:layout_constraintRight_toRightOf="@id/storageif_id"
+                app:layout_constraintTop_toBottomOf="@id/storageif_id"
                 android:textAlignment="center"
                 android:gravity="center_horizontal"
                 android:text="Αναγνωριστικό"/>
 
             <TextView
-                android:id="@+id/merchantif_phone"
+                android:id="@+id/storageif_value"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -119,11 +119,11 @@
                 android:layout_width="150dp"
                 android:layout_height="25dp"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_textview1_cardview2"
-                android:text="Τηλέφωνο"/>
+                app:layout_constraintTop_toBottomOf="@id/storageif_textview1_cardview2"
+                android:text="Τιμή"/>
 
             <TextView
-                android:id="@+id/merchantif_hint_phone"
+                android:id="@+id/storageif_hint_value"
                 android:textColor="#2d2d2d"
                 android:textSize="13sp"
                 android:textStyle="bold"
@@ -131,14 +131,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="@id/merchantif_phone"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_phone"
+                app:layout_constraintLeft_toLeftOf="@id/storageif_value"
+                app:layout_constraintTop_toBottomOf="@id/storageif_value"
                 android:textAlignment="center"
                 android:gravity="center_horizontal"
-                android:text="Τηλέφωνο"/>
+                android:text="Τιμή"/>
 
             <TextView
-                android:id="@+id/merchantif_surname"
+                android:id="@+id/storageif_merchant"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -149,11 +149,11 @@
                 android:gravity="center_horizontal"
                 android:layout_height="25dp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_hint_id"
-                android:text="Επίθετο"/>
+                app:layout_constraintTop_toBottomOf="@id/storageif_hint_id"
+                android:text="Προμηθευτής"/>
 
             <TextView
-                android:id="@+id/merchantif_hint_surname"
+                android:id="@+id/storageif_hint_merchant"
                 android:textColor="#2d2d2d"
                 android:textSize="13sp"
                 android:textStyle="bold"
@@ -161,14 +161,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="@id/merchantif_surname"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_surname"
+                app:layout_constraintRight_toRightOf="@id/storageif_merchant"
+                app:layout_constraintTop_toBottomOf="@id/storageif_merchant"
                 android:textAlignment="center"
                 android:gravity="center_horizontal"
-                android:text="Επίθετο"/>
+                android:text="Προμηθευτής"/>
 
             <TextView
-                android:id="@+id/merchantif_name"
+                android:id="@+id/storageif_date"
                 android:textColor="@color/colorAccent"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -179,11 +179,11 @@
                 android:layout_width="150dp"
                 android:layout_height="25dp"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_hint_phone"
-                android:text="Όνομα"/>
+                app:layout_constraintTop_toBottomOf="@id/storageif_hint_value"
+                android:text="Ημερομηνία"/>
 
             <TextView
-                android:id="@+id/merchantif_hint_name"
+                android:id="@+id/storageif_hint_date"
                 android:textColor="#2d2d2d"
                 android:textSize="13sp"
                 android:textStyle="bold"
@@ -191,14 +191,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="@id/merchantif_name"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_name"
+                app:layout_constraintLeft_toLeftOf="@id/storageif_date"
+                app:layout_constraintTop_toBottomOf="@id/storageif_date"
                 android:textAlignment="center"
                 android:gravity="center_horizontal"
-                android:text="Όνομα"/>
+                android:text="Ημερομηνία Παραγωγής"/>
 
             <TextView
-                android:id="@+id/merchantif_region"
+                android:id="@+id/storageif_category"
                 android:textColor="@color/colorAccent"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -209,11 +209,11 @@
                 android:gravity="center_horizontal"
                 android:layout_height="25dp"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_hint_surname"
-                android:text="Περιοχή"/>
+                app:layout_constraintTop_toBottomOf="@id/storageif_hint_merchant"
+                android:text="Κατηγορία"/>
 
             <TextView
-                android:id="@+id/merchantif_hint_region"
+                android:id="@+id/storageif_hint_category"
                 android:textColor="#2d2d2d"
                 android:textSize="13sp"
                 android:textStyle="bold"
@@ -221,14 +221,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="@id/merchantif_region"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_region"
+                app:layout_constraintRight_toRightOf="@id/storageif_category"
+                app:layout_constraintTop_toBottomOf="@id/storageif_category"
                 android:textAlignment="center"
                 android:gravity="center_horizontal"
-                android:text="Περιοχή"/>
+                android:text="Κατηγορία"/>
 
             <TextView
-                android:id="@+id/merchantif_address"
+                android:id="@+id/storageif_catattr"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -239,11 +239,11 @@
                 android:layout_width="150dp"
                 android:layout_height="25dp"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_hint_name"
-                android:text="Διεύθυνση"/>
+                app:layout_constraintTop_toBottomOf="@id/storageif_hint_date"
+                android:text="Εξτρα"/>
 
             <TextView
-                android:id="@+id/merchantif_hint_mer_region"
+                android:id="@+id/storageif_hint_catattr"
                 android:textColor="#2d2d2d"
                 android:textSize="13sp"
                 android:textStyle="bold"
@@ -251,14 +251,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="@id/merchantif_address"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_address"
+                app:layout_constraintLeft_toLeftOf="@id/storageif_catattr"
+                app:layout_constraintTop_toBottomOf="@id/storageif_catattr"
                 android:textAlignment="center"
                 android:gravity="center_horizontal"
-                android:text="Διεύθυνση"/>
+                android:text="Έξτρα"/>
 
             <TextView
-                android:id="@+id/merchantif_email"
+                android:id="@+id/storageif_stock"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -269,33 +269,33 @@
                 android:layout_height="30dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_hint_region"
-                android:text="Email"/>
+                app:layout_constraintTop_toBottomOf="@id/storageif_hint_category"
+                android:text="Απόθεμα"/>
 
             <TextView
-                android:id="@+id/merchantif_hint_email"
+                android:id="@+id/storageif_hint_stock"
                 android:textColor="#2d2d2d"
                 android:textSize="13sp"
                 android:textStyle="bold"
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintLeft_toLeftOf="@id/merchantif_email"
-                app:layout_constraintRight_toRightOf="@id/merchantif_email"
-                app:layout_constraintTop_toBottomOf="@id/merchantif_email"
+                app:layout_constraintLeft_toLeftOf="@id/storageif_stock"
+                app:layout_constraintRight_toRightOf="@id/storageif_stock"
+                app:layout_constraintTop_toBottomOf="@id/storageif_stock"
                 android:textAlignment="center"
                 android:gravity="center_horizontal"
-                android:text="Email"/>
+                android:text="Απόθεμα"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/merchantif_editfab"
+        android:id="@+id/storageif_editfab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        app:layout_constraintTop_toBottomOf="@id/merchantif_cardview2"
+        app:layout_constraintTop_toBottomOf="@id/storageif_cardview2"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="150dp"
@@ -307,11 +307,11 @@
         app:srcCompat="@drawable/edit" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/merchantif_deletefab"
+        android:id="@+id/storageif_deletefab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        app:layout_constraintTop_toBottomOf="@id/merchantif_cardview2"
+        app:layout_constraintTop_toBottomOf="@id/storageif_cardview2"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="150dp"

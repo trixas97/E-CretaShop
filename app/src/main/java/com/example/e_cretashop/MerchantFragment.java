@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 /**
@@ -26,6 +29,8 @@ public class MerchantFragment extends Fragment {
     private TextView address;
     private TextView email;
     private TextView fullname;
+    private FloatingActionButton edit, delete;
+    private Fragment editfr, delfr;
 
     public MerchantFragment(Merchant merchant) {
         // Required empty public constructor
@@ -50,6 +55,10 @@ public class MerchantFragment extends Fragment {
         address = view.findViewById(R.id.merchantif_address);
         email = view.findViewById(R.id.merchantif_email);
         fullname = view.findViewById(R.id.merchantif_fullname);
+        delete = view.findViewById(R.id.merchantif_deletefab);
+        edit = view.findViewById(R.id.merchantif_editfab);
+        editfr = new MerchantAddEditFragment(merchant);
+        delfr = new MerchantsFragment();
 
         fullname.setText(merchant.getSurname() + " " + merchant.getName());
         id.setText(merchant.getId() + "");
@@ -59,6 +68,27 @@ public class MerchantFragment extends Fragment {
         regiontxt.setText(region.getName());
         address.setText(merchant.getAddress());
         email.setText(merchant.getEmail());
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.fragmentManager.beginTransaction().replace(R.id.frag_layout, editfr).addToBackStack(null).commit();
+            }
+        });
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.Database.myDao().deleteMerchant(merchant);
+                Toast.makeText(getActivity(), "Διαγράφηκε!!", Toast.LENGTH_LONG).show();
+                if(merchant.getKind() == 0)
+                    MainActivity.fragmentManager.beginTransaction().replace(R.id.frag_layout, delfr).addToBackStack(null).commit();
+                else {
+                    delfr = new CustomerFragment();
+                    MainActivity.fragmentManager.beginTransaction().replace(R.id.frag_layout, delfr).addToBackStack(null).commit();
+                }
+            }
+        });
 
         return view;
     }

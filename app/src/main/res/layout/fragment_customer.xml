@@ -43,7 +43,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/merchant_fab"
+        app:layout_constraintBottom_toTopOf="@id/customers_fab"
         app:layout_constraintTop_toBottomOf="@id/merchant_til"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="25dp"
@@ -52,7 +52,7 @@
         android:scrollbars="vertical"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/merchant_fab"
+        android:id="@+id/customers_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
@@ -60,6 +60,6 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="20dp"
-        app:srcCompat="@drawable/add_cart" />
+        app:srcCompat="@drawable/add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

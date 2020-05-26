@@ -67,7 +67,7 @@ public class ProductFragment extends Fragment {
         prodattr.setText(product.getAttribute());
         prodattrhint.setText(catattr.getName());
         proddate.setText(product.getDate());
-        prodmerchname.setText(merchant.getName());
+        prodmerchname.setText(merchant.getSurname());
         prodmerchphone.setText(merchant.getPhone());
         prodmerchregion.setText(region.getName());
 

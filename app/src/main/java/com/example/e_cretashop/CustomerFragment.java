@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.List;
 
 
@@ -21,6 +23,8 @@ public class CustomerFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private MerchantsRecyclerAdapter adapter;
+    private FloatingActionButton add;
+    private MerchantAddEditFragment addfr;
 
     private List<Merchant> merchants;
 
@@ -44,6 +48,16 @@ public class CustomerFragment extends Fragment {
         adapter = new MerchantsRecyclerAdapter(merchants);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
+
+        addfr = new MerchantAddEditFragment(1);
+        add = view.findViewById(R.id.customers_fab);
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.fragmentManager.beginTransaction().replace(R.id.frag_layout, addfr).addToBackStack(null).commit();
+            }
+        });
 
         return view;
     }
