@@ -57,8 +57,8 @@ public class StorageProductFragment extends Fragment {
         img = view.findViewById(R.id.storageif_img);
         delete = view.findViewById(R.id.storageif_deletefab);
         edit = view.findViewById(R.id.storageif_editfab);
-        //editfr = new MerchantAddEditFragment(merchant);
-        //delfr = new MerchantsFragment();
+        editfr = new StorageAddEditFragment(product);
+        delfr = new StorageFragment();
 
         merchant = MainActivity.Database.myDao().getMerchantProduct(product.getMerchant_id());
         category = MainActivity.Database.myDao().getCategory(product.getCategory_id());
@@ -74,6 +74,21 @@ public class StorageProductFragment extends Fragment {
         stock.setText(product.getStock() + "");
         name.setText(product.getName());
         img.setImageResource(product.getImg());
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.fragmentManager.beginTransaction().replace(R.id.frag_layout, editfr).addToBackStack(null).commit();
+            }
+        });
+
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.Database.myDao().deleteProduct(product);
+                MainActivity.fragmentManager.beginTransaction().replace(R.id.frag_layout, delfr).addToBackStack(null).commit();
+            }
+        });
 
         return view;
     }

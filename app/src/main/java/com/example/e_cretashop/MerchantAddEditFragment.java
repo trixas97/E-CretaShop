@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -36,6 +37,7 @@ public class MerchantAddEditFragment extends Fragment {
     private ArrayAdapter<String> adapter;
     private FloatingActionButton submit;
     private Fragment frag;
+    private int spinnerregid;
     private int flag = -1;
 
     public MerchantAddEditFragment(Merchant merchant) {
@@ -83,6 +85,8 @@ public class MerchantAddEditFragment extends Fragment {
             edphone.setText(merchant.getPhone());
             edemail.setText(merchant.getEmail());
             edaddress.setText(merchant.getAddress());
+            for(int i=0; i < regions.size(); i++) { if(MainActivity.Database.myDao().getRegion(merchant.getRegion_id()).getName().equals(regions.get(i).getName())) { spinnerregid = regions.get(i).getId(); break;} }
+            spregion.setSelection(spinnerregid-1);
         }
         else {
             merchant = new Merchant();
@@ -97,6 +101,20 @@ public class MerchantAddEditFragment extends Fragment {
                 fullname.setText("Δημιουργία Πελάτη");
         }
 
+        spregion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                for(int i=0; i < regions.size(); i++) { if(regions.get(i).getName().equals(spregion.getSelectedItem().toString())){ spinnerregid= regions.get(i).getId(); break;}  }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,9 +123,9 @@ public class MerchantAddEditFragment extends Fragment {
                 merchant.setPhone(edphone.getText().toString());
                 merchant.setEmail(edemail.getText().toString());
                 merchant.setAddress(edaddress.getText().toString());
+                merchant.setRegion_id(spinnerregid);
                 if(flag == 0 || flag == 1) {
                     merchant.setKind(flag);
-                    merchant.setRegion_id(1);
                     MainActivity.Database.myDao().insertMerchant(merchant);
                     Toast.makeText(getActivity(), "Δημιούργηθηκε!!", Toast.LENGTH_LONG).show();
                 }

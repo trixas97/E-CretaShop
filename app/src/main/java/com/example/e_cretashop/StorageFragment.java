@@ -26,7 +26,7 @@ public class StorageFragment extends Fragment {
     private RecyclerView.LayoutManager layoutManager;
     private StorageRecyclerAdapter adapter;
     private FloatingActionButton add;
-    private MerchantAddEditFragment addfr;
+    private StorageAddEditFragment addfr;
 
     private List<Product> products;
 
@@ -50,7 +50,7 @@ public class StorageFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
 
-        addfr = new MerchantAddEditFragment(0);
+        addfr = new StorageAddEditFragment();
         add = view.findViewById(R.id.storage_fab);
 
         add.setOnClickListener(new View.OnClickListener() {
