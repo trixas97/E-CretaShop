@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 /**
@@ -31,6 +34,8 @@ public class ProductFragment extends Fragment {
     private TextView prodmerchphone;
     private TextView prodmerchregion;
     private ImageView prodimg;
+    private FloatingActionButton addcart;
+    private Fragment fragcart;
 
     public ProductFragment(Product product, String catname, CategoryExtraItem catattr) {
         this.product = product;
@@ -59,6 +64,7 @@ public class ProductFragment extends Fragment {
         prodmerchname = view.findViewById(R.id.prodif_mer_name);
         prodmerchphone = view.findViewById(R.id.prodif_mer_phone);
         prodmerchregion = view.findViewById(R.id.prodif_mer_region);
+        addcart = view.findViewById(R.id.fab_add_product);
 
         prodname.setText(product.getName());
         prodimg.setImageResource(product.getImg());
@@ -70,6 +76,27 @@ public class ProductFragment extends Fragment {
         prodmerchname.setText(merchant.getSurname());
         prodmerchphone.setText(merchant.getPhone());
         prodmerchregion.setText(region.getName());
+
+        addcart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Cart cart = new Cart();
+                cart = MainActivity.Database.myDao().getCartByProductId(product.getId());
+                if(cart == null) {
+                    cart = new Cart();
+                    cart.setProduct(product.getId());
+                    cart.setQuantity(1);
+                    MainActivity.Database.myDao().insertCart(cart);
+                }
+                else{
+                    cart.setQuantity(cart.getQuantity() + 1);
+                    MainActivity.Database.myDao().updateCart(cart);
+                }
+                Toast.makeText(getActivity(), "Προστέθηκε στο καλάθι!", Toast.LENGTH_LONG).show();
+                fragcart = new OrderStep1Fragment();
+                MainActivity.fragmentManager.beginTransaction().replace(R.id.frag_layout, fragcart).addToBackStack(null).commit();
+            }
+        });
 
         return view;
     }

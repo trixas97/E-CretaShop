@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".CartFragment">
+    tools:context=".OrderStep1Fragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -59,7 +59,7 @@
                 android:layout_weight="3">
 
                 <TextView
-                    android:id="@+id/final_price_hint"
+                    android:id="@+id/cart_final_price_hint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -73,7 +73,7 @@
                     android:text="Συνολική Τιμή:"/>
 
                 <TextView
-                    android:id="@+id/final_price"
+                    android:id="@+id/cart_final_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -92,7 +92,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/final_price"
+                    app:layout_constraintTop_toBottomOf="@id/cart_final_price"
                     app:layout_constraintRight_toRightOf="parent"
                     app:rippleColor="@color/colorPrimary"
                     android:layout_marginTop="35dp"

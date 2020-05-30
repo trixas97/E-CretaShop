@@ -2,7 +2,6 @@ package com.example.e_cretashop;
 
 import android.os.Bundle;
 
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,17 +9,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CartFragment extends Fragment {
+public class OrderStep1Fragment extends Fragment {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
@@ -28,12 +28,13 @@ public class CartFragment extends Fragment {
 
     private List<Product> products;
     private CategoryExtraItem catattr;
+    public static TextView cartfinalprice;
     private FloatingActionButton submit;
 
-    private Fragment cart2;
+    private Fragment order2;
 
 
-    public CartFragment() {
+    public OrderStep1Fragment() {
         // Required empty public constructor
     }
 
@@ -41,27 +42,36 @@ public class CartFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_cart, container, false);
+        View view = inflater.inflate(R.layout.fragment_order_step1, container, false);
 
-        cart2 = new CartStep2Fragment();
+        order2 = new OrderStep2Fragment();
         submit = view.findViewById(R.id.fragment_cart_submit1);
+        cartfinalprice = view.findViewById(R.id.cart_final_price);
 
         products = MainActivity.Database.myDao().getProducts();
+        cartfinalprice.setText("000000000");
         recyclerView = view.findViewById(R.id.cart_recyclerview);
         layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         catattr = MainActivity.Database.myDao().getCategoryExtraItem(1);
-        adapter = new CartRecyclerAdapter(products);
+
+        List<Cart> cart = null;
+        List<Product> cartproducts = new ArrayList<>();
+        cart = MainActivity.Database.myDao().getCart();
+        for(int i=0; i < cart.size(); i++){ cartproducts.add(MainActivity.Database.myDao().getProduct(cart.get(i).getProduct())); }
+
+        adapter = new CartRecyclerAdapter(cartproducts,0);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainActivity.fragmentManager.beginTransaction().replace(R.id.frag_layout, cart2).addToBackStack(null).commit();
+                MainActivity.fragmentManager.beginTransaction().replace(R.id.frag_layout, order2).addToBackStack(null).commit();
             }
         });
+
 
 
         return view;

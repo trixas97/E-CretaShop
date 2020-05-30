@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".OrderStep2Fragment">
+
+
+    <com.kofigyan.stateprogressbar.StateProgressBar
+        android:id="@+id/spb"
+        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:spb_currentStateNumber="two"
+        app:spb_maxStateNumber="three"
+        app:spb_stateBackgroundColor="#BDBDBD"
+        app:spb_stateForegroundColor="@color/colorPrimary"
+        app:spb_stateNumberBackgroundColor="#808080"
+        app:spb_stateNumberForegroundColor="#eeeeee"
+        app:spb_currentStateDescriptionColor="@color/colorPrimary"
+        app:spb_stateDescriptionColor="#808080"
+        app:spb_animateToCurrentProgressState="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:spb_checkStateCompleted="true"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/spb"
+        android:text="Επιλογή Πελάτη"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:id="@+id/order_customer_textview"
+        android:textSize="34sp"/>
+
+     <SearchView
+         android:id="@+id/order_customer_search"
+         app:layout_constraintTop_toBottomOf="@id/order_customer_textview"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginBottom="10dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        app:layout_constraintTop_toBottomOf="@id/order_customer_search"
+        android:id="@+id/order_customer_recyclerview"
+        android:scrollbars="vertical"/>
+
+    <TextView
+        android:id="@+id/order_customer_name_hint"
+        app:layout_constraintTop_toBottomOf="@id/order_customer_recyclerview"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold"
+        android:text="Πελάτης: "
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/order_customer_name"
+        app:layout_constraintTop_toBottomOf="@id/order_customer_recyclerview"
+        app:layout_constraintLeft_toRightOf="@id/order_customer_name_hint"
+        android:textColor="@color/colorAccent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold"
+        android:text="ID - Eπίθετο Πελάτη "
+        android:textSize="20sp"/>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/order_customer_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/order_customer_name_hint"
+        app:rippleColor="@color/colorPrimary"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:clickable="true"
+        app:srcCompat="@drawable/submit_nav_cart"
+        android:backgroundTint="#0cbb06"
+        app:borderWidth="0dp" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

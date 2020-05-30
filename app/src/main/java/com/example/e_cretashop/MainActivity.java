@@ -7,7 +7,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
@@ -26,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     DrawerLayout drawerLayout;
-    NavigationView navigationView, navigationCart;
+    NavigationView navigationView;
     ActionBarDrawerToggle toggle;
     Fragment fragproducts, fragorders, fragcustomers, fragcategories, fragstorage, fragmerchants, fragcart;
     FloatingActionButton flb;
@@ -50,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         fragcategories = new CategoriesFragment();
         fragstorage = new StorageFragment();
         fragmerchants = new MerchantsFragment();
-        fragcart = new CartFragment();
+        fragcart = new OrderStep1Fragment();
         fragcustomers = new CustomerFragment();
 
         toolbar = findViewById(R.id.toolbar);
@@ -58,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.navigation_View);
-        navigationCart = findViewById(R.id.navigation_cart);
 
         toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.drawer_open,R.string.drawer_close);
         drawerLayout.addDrawerListener(toggle);
@@ -70,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         carticon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawerLayout.openDrawer(findViewById(R.id.navigation_cart));
+                fragmentManager.beginTransaction().replace(R.id.frag_layout, fragcart).addToBackStack(null).commit();
             }
         });
 
@@ -115,32 +113,36 @@ public class MainActivity extends AppCompatActivity {
         Database = Room.databaseBuilder(getApplicationContext(),DatabaseShop.class,"cretashopDB").allowMainThreadQueries().build();
         getSupportFragmentManager().beginTransaction().replace(R.id.frag_layout, fragcategories).commit();
 
-        products = Database.myDao().getProducts();
-        recyclerView = findViewById(R.id.cart_recyclerview);
-        layoutManager = new LinearLayoutManager(MainActivity.this,LinearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(layoutManager);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        catattr = MainActivity.Database.myDao().getCategoryExtraItem(1);
-        adapter = new CartRecyclerAdapter(products);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapter);
-
-        flb = findViewById(R.id.navigation_cart_fabcheck);
-
-        flb.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fragmentManager.beginTransaction().replace(R.id.frag_layout, fragcart).addToBackStack(null).commit();
-                drawerLayout.closeDrawers();
-            }
-        });
-
-
-
-
-
-
+        
+//        List<Cart> cart = null;
+//        List<Product> cartproducts = new ArrayList<>();
+//        cart = Database.myDao().getCart();
+//        for(int i=0; i < cart.size(); i++){ cartproducts.add(Database.myDao().getProduct(cart.get(i).getProduct())); }
 //
+//        adapter = new CartRecyclerAdapter(cartproducts,0);
+//        recyclerView.setHasFixedSize(true);
+//        recyclerView.setAdapter(adapter);
+//
+//        flb = findViewById(R.id.navigation_cart_fabcheck);
+//        finalprice = findViewById(R.id.final_price);
+//
+//        finalprice.setText("000000000");
+
+
+//        flb.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                fragmentManager.beginTransaction().replace(R.id.frag_layout, fragcart).addToBackStack(null).commit();
+//                drawerLayout.closeDrawers();
+//            }
+//        });
+
+
+
+
+
+
+
 //        Category category = new Category();
 //        category.setName("Τυροκομικά");
 //        category.setImg(R.drawable.tyria);
@@ -161,6 +163,12 @@ public class MainActivity extends AppCompatActivity {
 //        Database.myDao().insertCategoryExtraItem(extraItem);
 //        extraItem.setCategory_id(1);
 //        extraItem.setName("Είδος Τυριού");
+//        Database.myDao().insertCategoryExtraItem(extraItem);
+//        extraItem.setCategory_id(3);
+//        extraItem.setName("Οξύτητα");
+//        Database.myDao().insertCategoryExtraItem(extraItem);
+//        extraItem.setCategory_id(4);
+//        extraItem.setName("Αλκοόλη(%)");
 //        Database.myDao().insertCategoryExtraItem(extraItem);
 //
 //        Region region = new Region();
@@ -235,6 +243,14 @@ public class MainActivity extends AppCompatActivity {
 //        product.setPrice(10);
 //        product.setImg(R.drawable.kouneli);
 //        Database.myDao().insertProduct(product);
+//
+//        Cart cart = new Cart();
+//        cart.setProduct(3);
+//        cart.setQuantity(2);
+//        Database.myDao().insertCart(cart);
+//        cart.setProduct(4);
+//        cart.setQuantity(5);
+//        Database.myDao().insertCart(cart);
 
 
 

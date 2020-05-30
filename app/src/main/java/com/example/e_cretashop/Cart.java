@@ -1,17 +1,39 @@
 package com.example.e_cretashop;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
+
+@Entity (tableName = "cart",
+         foreignKeys = {
+         @ForeignKey(entity = Product.class,
+                parentColumns = "id",
+                childColumns = "pid",
+                onDelete = ForeignKey.CASCADE,
+                onUpdate = ForeignKey.CASCADE)
+         })
 public class Cart {
-    private int[][] products;
 
-    public Cart(int[][] products){
-        this.products = products;
+    @PrimaryKey @ColumnInfo (name = "pid")
+    private int product;
+
+    @ColumnInfo (name = "quantity")
+    private int quantity;
+
+    public int getProduct() {
+        return product;
     }
 
-    public int[][] getProducts() {
-        return products;
+    public void setProduct(int product) {
+        this.product = product;
     }
 
-    public void setProducts(int[][] products) {
-        this.products = products;
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

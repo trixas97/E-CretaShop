@@ -56,6 +56,7 @@ public class StorageRecyclerAdapter extends RecyclerView.Adapter<StorageRecycler
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 fragproduct = new StorageProductFragment(list.get(position));
                 MainActivity.fragmentManager.beginTransaction().replace(R.id.frag_layout, fragproduct).addToBackStack(null).commit();
             }

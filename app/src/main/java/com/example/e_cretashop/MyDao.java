@@ -26,6 +26,9 @@ public interface MyDao {
     @Insert
     public void insertCategoryExtraItem(CategoryExtraItem extraItem);
 
+    @Insert
+    public void insertCart(Cart cart);
+
     @Update
     public void updateCategory(Category category);
 
@@ -35,6 +38,9 @@ public interface MyDao {
     @Update
     public void updateProduct(Product product);
 
+    @Update
+    public void updateCart(Cart cart);
+
     @Delete
     public void deleteProduct(Product product);
 
@@ -43,6 +49,9 @@ public interface MyDao {
 
     @Delete
     public void deleteMerchant(Merchant merchant);
+
+    @Delete
+    public void deleteCart(Cart cart);
 
     @Query("select * from categories")
     public List<Category> getCategories();
@@ -74,8 +83,17 @@ public interface MyDao {
     @Query("select * from products")
     public List<Product> getProducts();
 
+    @Query("select * from products where id=:id")
+    public Product getProduct(int id);
+
     @Query("select * from products where cat_id=:catid")
     public List<Product> getCategoryProducts(int catid);
+
+    @Query("select * from cart")
+    public List<Cart> getCart();
+
+    @Query("select * from cart where pid=:pid")
+    public Cart getCartByProductId(int pid);
 
 
 }

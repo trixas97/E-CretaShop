@@ -45,7 +45,7 @@ public class CustomerFragment extends Fragment {
         layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
 //        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        adapter = new MerchantsRecyclerAdapter(merchants);
+        adapter = new MerchantsRecyclerAdapter(merchants,0);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
 
