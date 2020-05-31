@@ -16,6 +16,19 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.e_cretashop.Adapters.CartRecyclerAdapter;
+import com.example.e_cretashop.Database.DatabaseShop;
+import com.example.e_cretashop.Database.Entities.Category;
+import com.example.e_cretashop.Database.Entities.CategoryExtraItem;
+import com.example.e_cretashop.Database.Entities.Merchant;
+import com.example.e_cretashop.Database.Entities.Product;
+import com.example.e_cretashop.Database.Entities.Region;
+import com.example.e_cretashop.Fragments.CategoriesFragment;
+import com.example.e_cretashop.Fragments.Merchant_Customer.CustomerFragment;
+import com.example.e_cretashop.Fragments.Merchant_Customer.MerchantsFragment;
+import com.example.e_cretashop.Fragments.Order.OrderStep1Fragment;
+import com.example.e_cretashop.Fragments.Order.OrdersFragment;
+import com.example.e_cretashop.Fragments.Storage.StorageFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
