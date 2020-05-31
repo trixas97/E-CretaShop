@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -27,6 +28,7 @@ public class StorageFragment extends Fragment {
     private StorageRecyclerAdapter adapter;
     private FloatingActionButton add;
     private StorageAddEditFragment addfr;
+    private SearchView search;
 
     private List<Product> products;
 
@@ -53,6 +55,20 @@ public class StorageFragment extends Fragment {
         addfr = new StorageAddEditFragment();
         add = view.findViewById(R.id.storage_fab);
 
+        search = view.findViewById(R.id.storage_search);
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,50 +76,6 @@ public class StorageFragment extends Fragment {
             }
         });
 
-//        textView = view.findViewById(R.id.textview1);
-//
-//        List<Category> categories = MainActivity.Database.myDao().getCategories();
-//        String result = "";
-//        for (Category i : categories) {
-//            int id = i.getId();
-//            String name = i.getName();
-//            result = result + "\n Id: " + id + "\n Name: " + name + "\n ";
-//        }
-//        result = result + "\n\n";
-//
-//        List<CategoryExtraItem> extraItems = MainActivity.Database.myDao().getCategoriesExtraItem();
-//        for (CategoryExtraItem i : extraItems) {
-//            int id = i.getId();
-//            String name = i.getName();
-//            result = result + "\n Id: " + id + "\n Name: " + name + "\n ";
-//        }
-//        result = result + "\n\n";
-//
-//        List<Merchant> merchants = MainActivity.Database.myDao().getMerchants();
-//        for (Merchant i : merchants) {
-//            int id = i.getId();
-//            String name = i.getName();
-//            result = result + "\n Id: " + id + "\n Name: " + name + "\n ";
-//        }
-//        result = result + "\n\n";
-//
-//        List<Product> products = MainActivity.Database.myDao().getProducts();
-//        for (Product i : products) {
-//            int id = i.getId();
-//            String name = i.getName();
-//            result = result + "\n Id: " + id + "\n Name: " + name + "\n ";
-//        }
-//        result = result + "\n\n";
-//
-//        List<Region> regions = MainActivity.Database.myDao().getRegions();
-//        for (Region i : regions) {
-//            int id = i.getId();
-//            String name = i.getName();
-//            result = result + "\n Id: " + id + "\n Name: " + name + "\n ";
-//        }
-//        result = result + "\n\n";
-//
-//        textView.setText(result);
 
         return view;
     }

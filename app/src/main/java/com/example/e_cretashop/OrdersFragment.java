@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -25,7 +26,7 @@ public class OrdersFragment extends Fragment {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private OrdersRecyclerAdapter adapter;
-   // private OrdersAddEditFragment addfr;
+    private SearchView search;
 
     private List<Order> orders;
 
@@ -46,6 +47,20 @@ public class OrdersFragment extends Fragment {
         adapter = new OrdersRecyclerAdapter(orders);
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
+
+        search = view.findViewById(R.id.ordersfr_search);
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
 
         return view;
     }

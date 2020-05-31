@@ -95,6 +95,12 @@ public class OrderFragment extends Fragment {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                List<OrderProduct> orderProducts = MainActivity.Database.myDao().getOrdersProductsByOrderId(order.getId());
+                for(int i=0; i < orderProducts.size(); i++) {
+                    Product productorder = MainActivity.Database.myDao().getProduct(orderProducts.get(i).getProduct());
+                    productorder.setStock(productorder.getStock() + orderProducts.get(i).getQuantity());
+                    MainActivity.Database.myDao().updateProduct(productorder);
+                }
                 MainActivity.Database.myDao().deleteOrder(order);
                 Fragment ordersfrag = new OrdersFragment();
                 Toast.makeText(getActivity(), "Διαγράφτηκε η παραγγελία!", Toast.LENGTH_SHORT).show();

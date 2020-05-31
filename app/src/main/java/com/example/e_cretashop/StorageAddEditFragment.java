@@ -155,24 +155,38 @@ public class StorageAddEditFragment extends Fragment {
             public void onClick(View v) {
                 product.setName(edname.getText().toString());
                 product.setCategory_id(spinnercatid);
-                String[] merchantparts = merchant.getText().toString().split(" - ", 2);
+                try {
+                    String[] merchantparts = merchant.getText().toString().split(" - ", 2);
+                    product.setMerchant_id(Integer.parseInt(merchantparts[0]));
+                }
+                catch (Exception e){Toast.makeText(getActivity(), "Δώστε έναν έγκυρο Προμηθευτή", Toast.LENGTH_LONG).show();}
+
 //                String[] merchantparts = merchant.getText().toString().split(" - ");
-                product.setMerchant_id(Integer.parseInt(merchantparts[0]));
+
                 product.setDate(eddate.getText().toString());
                 product.setAttribute(edcatattr.getText().toString());
                 product.setPrice(Float.parseFloat(edprice.getText().toString()));
                 product.setStock(Integer.parseInt(edstock.getText().toString()));
                 if(flag == 0) {
                     product.setImg(MainActivity.Database.myDao().getCategory(spinnercatid).getImg());
-                    MainActivity.Database.myDao().insertProduct(product);
-                    Toast.makeText(getActivity(), "Δημιούργηθηκε!!", Toast.LENGTH_LONG).show();
+                    try {
+                        MainActivity.Database.myDao().insertProduct(product);
+                        Toast.makeText(getActivity(), "Δημιούργηθηκε!!", Toast.LENGTH_LONG).show();
+                        MainActivity.fragmentManager.beginTransaction().replace(R.id.frag_layout, frag).addToBackStack(null).commit();
+                    }
+                    catch (Exception e){Toast.makeText(getActivity(), "Δώστε έναν έγκυρο Προμηθευτή", Toast.LENGTH_LONG).show();}
+
                 }
                 else {
-                    MainActivity.Database.myDao().updateProduct(product);
-                    Toast.makeText(getActivity(), "Ενημερώθηκε!!", Toast.LENGTH_LONG).show();
+                    try {
+                        MainActivity.Database.myDao().updateProduct(product);
+                        Toast.makeText(getActivity(), "Ενημερώθηκε!!", Toast.LENGTH_LONG).show();
+                        MainActivity.fragmentManager.beginTransaction().replace(R.id.frag_layout, frag).addToBackStack(null).commit();
+                    }
+                    catch (Exception e){Toast.makeText(getActivity(), "Δώστε έναν έγκυρο Προμηθευτή", Toast.LENGTH_LONG).show();}
                 }
 
-                MainActivity.fragmentManager.beginTransaction().replace(R.id.frag_layout, frag).addToBackStack(null).commit();
+
 
             }
         });

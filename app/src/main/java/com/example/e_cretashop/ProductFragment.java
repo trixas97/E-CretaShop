@@ -89,6 +89,7 @@ public class ProductFragment extends Fragment {
         if(product.getStock() == 0) {
             prodstatus.setText("Μη Διαθέσιμο");
             prodstatus.setTextColor(Color.RED);
+            addcart.setVisibility(View.INVISIBLE);
         }
         else {
             if (product.getStock() < 5) {

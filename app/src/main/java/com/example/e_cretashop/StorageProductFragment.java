@@ -9,9 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -32,7 +34,7 @@ public class StorageProductFragment extends Fragment {
     private TextView stock;
     private TextView mer;
     private TextView date;
-    private  TextView sales;
+    private TextView sales;
     private ImageView img;
     private FloatingActionButton edit, delete;
     private Fragment editfr, delfr;
@@ -77,10 +79,13 @@ public class StorageProductFragment extends Fragment {
         prodcatattrtxt.setText(product.getAttribute());
         stock.setText(product.getStock() + "");
 
-        List<OrderProduct> orderProducts = MainActivity.Database.myDao().getOrdersProductsByOrderId(product.getId());
+        List<OrderProduct> orderProducts = MainActivity.Database.myDao().getOrdersProductsByProductId(product.getId());
         int salessum = 0;
-        for (int i=0; i <orderProducts.size(); i++) { salessum = orderProducts.get(i).getQuantity(); }
-        sales.setText(salessum + "$");
+        sales.setText(salessum + "");
+        for (int i=0; i < orderProducts.size(); i++) { salessum += orderProducts.get(i).getQuantity(); }
+        Toast.makeText(getActivity(),  product.getId() + ": " + salessum, Toast.LENGTH_SHORT).show();
+        sales.setText(salessum + "");
+
 
         name.setText(product.getName());
         img.setImageResource(product.getImg());
@@ -95,6 +100,9 @@ public class StorageProductFragment extends Fragment {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                List<Order> orders = MainActivity.Database.myDao().getOrdersByProduct(product.getId());
+                for (int i=0; i < orders.size(); i++) { MainActivity.Database.myDao().deleteOrder(orders.get(i));}
+                Toast.makeText(getActivity(), "Το προιόν διαγράφτηκε!", Toast.LENGTH_LONG).show();
                 MainActivity.Database.myDao().deleteProduct(product);
                 MainActivity.fragmentManager.beginTransaction().replace(R.id.frag_layout, delfr).addToBackStack(null).commit();
             }

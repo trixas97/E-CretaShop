@@ -123,6 +123,9 @@ public interface MyDao {
     @Query("select * from orders where id=:id")
     public Order getOrderByOrderId(int id);
 
+    @Query("select o.* from orders o join ordersproducts op on o.id=op.oid where op.pid=:pid")
+    public List<Order> getOrdersByProduct(int pid);
+
     @Query("select * from ordersproducts")
     public List<OrderProduct> getOrdersProducts();
 

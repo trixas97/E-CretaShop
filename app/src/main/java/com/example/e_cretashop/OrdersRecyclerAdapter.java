@@ -3,6 +3,8 @@ package com.example.e_cretashop;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,11 +13,12 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
-public class OrdersRecyclerAdapter extends RecyclerView.Adapter<OrdersRecyclerAdapter.MyViewHolder> {
-    private List<Order> list;
+public class OrdersRecyclerAdapter extends RecyclerView.Adapter<OrdersRecyclerAdapter.MyViewHolder> implements Filterable {
+    private List<Order> list, listordersall;
     private Merchant customer;
 //    private Category category;
 //    private CategoryExtraItem catattr;
@@ -24,6 +27,7 @@ public class OrdersRecyclerAdapter extends RecyclerView.Adapter<OrdersRecyclerAd
 
     public OrdersRecyclerAdapter(List<Order> list) {
         this.list = list;
+        listordersall = new ArrayList<>(list);
     }
 
     @Override
@@ -84,5 +88,42 @@ public class OrdersRecyclerAdapter extends RecyclerView.Adapter<OrdersRecyclerAd
             cardView = (CardView) itemView.findViewById(R.id.orderitem_card);
         }
     }
+
+    @Override
+    public Filter getFilter() {
+        return filterorders;
+    }
+
+    private Filter filterorders = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Order> ordersfilter = new ArrayList<>();
+            if(constraint.toString().isEmpty())
+                ordersfilter.addAll(listordersall);
+            else{
+                for(Order order : listordersall){
+                    String textid = order.getId() + "";
+                    String textsurname = MainActivity.Database.myDao().getMerchantProduct(order.getCid()).getSurname();
+                    String textphone= MainActivity.Database.myDao().getMerchantProduct(order.getCid()).getPhone();
+                    if(textid.toLowerCase().contains(constraint.toString().toLowerCase()) ||
+                       textsurname.toLowerCase().contains(constraint.toString().toLowerCase()) ||
+                       textphone.toLowerCase().contains(constraint.toString().toLowerCase())){
+                            ordersfilter.add(order);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = ordersfilter;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            list = (ArrayList<Order>) results.values;
+            notifyDataSetChanged();
+        }
+    };
 }
 

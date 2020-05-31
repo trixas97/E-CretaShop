@@ -3,6 +3,8 @@ package com.example.e_cretashop;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,18 +13,21 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
-public class StorageRecyclerAdapter extends RecyclerView.Adapter<StorageRecyclerAdapter.MyViewHolder> {
-    private List<Product> list;
+public class StorageRecyclerAdapter extends RecyclerView.Adapter<StorageRecyclerAdapter.MyViewHolder> implements Filterable {
+    private List<Product> list, liststorageall;
     private Category category;
     private CategoryExtraItem catattr;
     private Fragment fragproduct;
 
 
+
     public StorageRecyclerAdapter(List<Product> list) {
         this.list = list;
+        liststorageall = new ArrayList<>(this.list);
     }
 
     @Override
@@ -96,5 +101,38 @@ public class StorageRecyclerAdapter extends RecyclerView.Adapter<StorageRecycler
             cardView = (CardView) itemView.findViewById(R.id.prod_card);
         }
     }
+
+    @Override
+    public Filter getFilter() {
+        return filterproducts;
+    }
+
+    private Filter filterproducts = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Product> productsfilter = new ArrayList<>();
+            if(constraint.toString().isEmpty())
+                productsfilter.addAll(liststorageall);
+            else{
+                for(Product product : liststorageall){
+                    String textid = product.getId() + "";
+                    if(textid.toLowerCase().contains(constraint.toString().toLowerCase())){
+                        productsfilter.add(product);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = productsfilter;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            list = (ArrayList<Product>) results.values;
+            notifyDataSetChanged();
+        }
+    };
 }
 
