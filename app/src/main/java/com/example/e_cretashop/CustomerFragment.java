@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -25,6 +26,7 @@ public class CustomerFragment extends Fragment {
     private MerchantsRecyclerAdapter adapter;
     private FloatingActionButton add;
     private MerchantAddEditFragment addfr;
+    private SearchView search;
 
     private List<Merchant> merchants;
 
@@ -41,6 +43,7 @@ public class CustomerFragment extends Fragment {
 
 
         merchants = MainActivity.Database.myDao().getCustomers();
+        search = view.findViewById(R.id.customer_search);
         recyclerView = view.findViewById(R.id.mer_recyclerview);
         layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -51,6 +54,19 @@ public class CustomerFragment extends Fragment {
 
         addfr = new MerchantAddEditFragment(1);
         add = view.findViewById(R.id.customers_fab);
+
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return false;
+            }
+        });
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -21,6 +21,9 @@ public class Cart {
     @ColumnInfo (name = "quantity")
     private int quantity;
 
+    @ColumnInfo (name = "oid")
+    private int orderid;
+
     public int getProduct() {
         return product;
     }
@@ -35,5 +38,13 @@ public class Cart {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public int getOrderid() {
+        return orderid;
+    }
+
+    public void setOrderid(int orderid) {
+        this.orderid = orderid;
     }
 }

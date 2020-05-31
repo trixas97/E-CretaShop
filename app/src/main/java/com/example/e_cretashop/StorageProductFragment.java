@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.List;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +32,7 @@ public class StorageProductFragment extends Fragment {
     private TextView stock;
     private TextView mer;
     private TextView date;
+    private  TextView sales;
     private ImageView img;
     private FloatingActionButton edit, delete;
     private Fragment editfr, delfr;
@@ -54,6 +57,7 @@ public class StorageProductFragment extends Fragment {
         prodcatattrtxt = view.findViewById((R.id.storageif_catattr));
         mer = view.findViewById(R.id.storageif_merchant);
         date = view.findViewById(R.id.storageif_date);
+        sales = view.findViewById(R.id.storageif_sales);
         img = view.findViewById(R.id.storageif_img);
         delete = view.findViewById(R.id.storageif_deletefab);
         edit = view.findViewById(R.id.storageif_editfab);
@@ -72,6 +76,12 @@ public class StorageProductFragment extends Fragment {
         catattrtxt.setText(catattr.getName());
         prodcatattrtxt.setText(product.getAttribute());
         stock.setText(product.getStock() + "");
+
+        List<OrderProduct> orderProducts = MainActivity.Database.myDao().getOrdersProductsByOrderId(product.getId());
+        int salessum = 0;
+        for (int i=0; i <orderProducts.size(); i++) { salessum = orderProducts.get(i).getQuantity(); }
+        sales.setText(salessum + "$");
+
         name.setText(product.getName());
         img.setImageResource(product.getImg());
 

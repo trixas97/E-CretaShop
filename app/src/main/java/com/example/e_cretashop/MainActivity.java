@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         fragmerchants = new MerchantsFragment();
         fragcart = new OrderStep1Fragment();
         fragcustomers = new CustomerFragment();
+        fragorders = new OrdersFragment();
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -91,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.orders:
                         menuItem.setChecked(true);
                         displayMessage("Παραγγελίες");
+                        fragmentManager.beginTransaction().replace(R.id.frag_layout, fragorders).addToBackStack(null).commit();
+                        drawerLayout.closeDrawers();
                         return true;
                     case R.id.products:
                         menuItem.setChecked(true);
@@ -213,6 +216,7 @@ public class MainActivity extends AppCompatActivity {
 //        product.setName("Μυζήθρα");
 //        product.setAttribute("Άσπρο");
 //        product.setDate("25/3/2020");
+//        product.setStock(3);
 //        product.setPrice(6);
 //        product.setImg(R.drawable.xynomyzithra);
 //        Database.myDao().insertProduct(product);
@@ -223,6 +227,7 @@ public class MainActivity extends AppCompatActivity {
 //        product.setAttribute("Κεφάλι");
 //        product.setDate("25/3/2020");
 //        product.setPrice(8);
+//        product.setStock(8);
 //        product.setImg(R.drawable.arni);
 //        Database.myDao().insertProduct(product);
 //
@@ -232,6 +237,7 @@ public class MainActivity extends AppCompatActivity {
 //        product.setAttribute("Κίτρινο");
 //        product.setDate("25/3/2020");
 //        product.setPrice(11);
+//        product.setStock(5);
 //        product.setImg(R.drawable.grabiera);
 //        Database.myDao().insertProduct(product);
 //
@@ -240,10 +246,11 @@ public class MainActivity extends AppCompatActivity {
 //        product.setName("Κουνέλι");
 //        product.setAttribute("Ολόκληρο");
 //        product.setDate("25/3/2020");
+//        product.setStock(12);
 //        product.setPrice(10);
 //        product.setImg(R.drawable.kouneli);
 //        Database.myDao().insertProduct(product);
-//
+
 //        Cart cart = new Cart();
 //        cart.setProduct(3);
 //        cart.setQuantity(2);

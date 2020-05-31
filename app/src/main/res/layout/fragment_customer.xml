@@ -8,7 +8,7 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/merchant_headtext"
+        android:id="@+id/customer_headtext"
         android:layout_width="match_parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_height="0dp"
@@ -19,32 +19,19 @@
         android:textStyle="bold"
         android:textSize="34sp"/>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/merchant_til"
+    <SearchView
+        android:id="@+id/customer_search"
+        app:layout_constraintTop_toBottomOf="@id/customer_headtext"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        app:layout_constraintTop_toBottomOf="@id/merchant_headtext"
-        app:layout_constraintLeft_toLeftOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/merchant_tied"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Αναζήτηση Πελάτη"
-            android:textStyle="bold"
-            android:textSize="20sp"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
+        android:layout_height="wrap_content"
+        android:queryHint="Αναζήτηση Πελάτη"
+        android:layout_marginBottom="10dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/customers_fab"
-        app:layout_constraintTop_toBottomOf="@id/merchant_til"
+        app:layout_constraintTop_toBottomOf="@id/customer_search"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="20dp"

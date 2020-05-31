@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/orderitem_card"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_margin="5dp"
+    cardview:cardCornerRadius="4dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
+            android:layout_width="125dp"
+            android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/orderitem_constimg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/orderitem_img"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:scaleType="centerCrop"
+                android:foregroundGravity="center"
+                cardview:layout_constraintTop_toTopOf="parent"
+                cardview:layout_constraintBottom_toBottomOf="parent"
+                cardview:layout_constraintLeft_toLeftOf="parent"
+                cardview:layout_constraintRight_toRightOf="parent"
+                android:src="@drawable/order" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/orderitem_const"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+            <TextView
+                android:id="@+id/orderitem_id"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                cardview:layout_constraintLeft_toLeftOf="@id/orderitem_hint_id"
+                cardview:layout_constraintRight_toRightOf="@id/orderitem_hint_id"
+                cardview:layout_constraintTop_toTopOf="parent"
+                android:text="1"/>
+
+            <TextView
+                android:id="@+id/orderitem_hint_id"
+                android:textColor="#2d2d2d"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                cardview:layout_constraintLeft_toLeftOf="parent"
+                cardview:layout_constraintTop_toBottomOf="@id/orderitem_id"
+                android:text="Αναγνωριστικό"/>
+
+            <TextView
+                android:id="@+id/orderitem_date"
+                android:textColor="@color/colorAccent"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                cardview:layout_constraintRight_toRightOf="parent"
+                cardview:layout_constraintTop_toTopOf="parent"
+                android:text="25/05/2020"/>
+
+            <TextView
+                android:id="@+id/orderitem_hint_date"
+                android:textColor="#2d2d2d"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:layout_marginRight="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                cardview:layout_constraintRight_toRightOf="parent"
+                cardview:layout_constraintTop_toBottomOf="@id/orderitem_date"
+                cardview:layout_constraintLeft_toLeftOf="@id/orderitem_date"
+                android:text="Ημερομηνία"/>
+
+            <TextView
+                android:id="@+id/orderitem_customer"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                cardview:layout_constraintLeft_toLeftOf="parent"
+                cardview:layout_constraintBottom_toBottomOf="parent"
+                android:text="Τριχάκης(1)"/>
+
+            <TextView
+                android:id="@+id/orderitem_hint_customer"
+                android:textColor="#2d2d2d"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                cardview:layout_constraintLeft_toLeftOf="parent"
+                cardview:layout_constraintTop_toBottomOf="@id/orderitem_customer"
+                cardview:layout_constraintRight_toRightOf="@id/orderitem_customer"
+                android:text="Πελάτης"/>
+
+            <TextView
+                android:id="@+id/orderitem_finalprice"
+                android:textColor="@color/colorPrimary"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                cardview:layout_constraintRight_toRightOf="parent"
+                cardview:layout_constraintBottom_toBottomOf="parent"
+                android:text="500"/>
+
+            <TextView
+                android:id="@+id/orderitem_hint_finalprice"
+                android:textColor="#2d2d2d"
+                android:textSize="8sp"
+                android:textStyle="bold"
+                android:layout_marginRight="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                cardview:layout_constraintRight_toRightOf="parent"
+                cardview:layout_constraintTop_toBottomOf="@id/orderitem_finalprice"
+                cardview:layout_constraintLeft_toLeftOf="@id/orderitem_finalprice"
+                android:text="Τελική τιμή"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

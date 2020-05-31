@@ -202,6 +202,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Τιμή"
+                    android:inputType="number"
                     android:textStyle="bold"
                     android:textColor="@color/colorPrimary"
                     android:textSize="20sp"/>
@@ -223,6 +224,7 @@
                     android:id="@+id/storage_ae_tied_stock"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     android:hint="Απόθεμα"
                     android:textStyle="bold"
                     android:textColor="@color/colorPrimary"

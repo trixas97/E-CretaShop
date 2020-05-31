@@ -28,9 +28,9 @@ public class OrderStep2Fragment extends Fragment {
     public static FloatingActionButton orderCustomerSubmit;
     public static TextView customer;
     private Fragment order3;
+    private int orderid;
 
     public OrderStep2Fragment() {
-
     }
 
     @Override
@@ -47,7 +47,15 @@ public class OrderStep2Fragment extends Fragment {
         customers = MainActivity.Database.myDao().getCustomers();
 //        orderCustomerSubmit.setEnabled(false);
         orderCustomerSubmit.setActivated(false);
+        List<Cart> cart = MainActivity.Database.myDao().getCart();
         customer.setVisibility(View.INVISIBLE);
+
+        if(OrderFragment.orderid != 0){
+            orderid = OrderFragment.orderid;
+            customer.setVisibility(View.VISIBLE);
+            customer.setText(MainActivity.Database.myDao().getOrderByOrderId(orderid).getCid() + " - " + MainActivity.Database.myDao().getMerchantProduct(MainActivity.Database.myDao().getOrderByOrderId(orderid).getCid()).getSurname() + " " + MainActivity.Database.myDao().getMerchantProduct(MainActivity.Database.myDao().getOrderByOrderId(orderid).getCid()).getName());
+        }
+
 
         layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -75,11 +83,11 @@ public class OrderStep2Fragment extends Fragment {
 //                customer.setText(merchantparts[0]);
 //                customer.setVisibility(View.VISIBLE);
 
-                if(orderCustomerSubmit.isActivated()) {
+                if(customer.getVisibility() == View.VISIBLE) {
                     String[] merchantparts = customer.getText().toString().split(" - ", 2);
                     Merchant customerparse = new Merchant();
                     customerparse = MainActivity.Database.myDao().getMerchantProduct(Integer.parseInt(merchantparts[0]));
-                    order3 = new OrderStep3Fragment(customerparse);
+                    order3 = new OrderStep3Fragment(customerparse, 0);
                     MainActivity.fragmentManager.beginTransaction().replace(R.id.frag_layout, order3).addToBackStack(null).commit();
                 }
                 else

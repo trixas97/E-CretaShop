@@ -4,49 +4,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".MerchantsFragment">
+    tools:context=".OrdersFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:id="@+id/merchant_headtext"
+        android:id="@+id/ordersfr_headtext"
         android:layout_width="match_parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_marginTop="15dp"
-        android:text="Έμποροι"
+        android:text="Παραγγελίες"
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="34sp"/>
 
     <SearchView
-        android:id="@+id/merchant_search"
-        app:layout_constraintTop_toBottomOf="@id/merchant_headtext"
+        android:id="@+id/ordersfr_search"
+        app:layout_constraintTop_toBottomOf="@id/ordersfr_headtext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="Αναζήτηση Έμπορου"
-        android:layout_marginBottom="10dp"/>
+        android:queryHint="Αναζήτηση Παραγγελίας"
+        android:layout_marginTop="20dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/merchant_fab"
-        app:layout_constraintTop_toBottomOf="@id/merchant_search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ordersfr_search"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginTop="25dp"
-        android:layout_marginBottom="20dp"
-        android:id="@+id/mer_recyclerview"
+        android:layout_marginTop="10dp"
+        android:id="@+id/ordersfr_recyclerview"
         android:scrollbars="vertical"/>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/merchant_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="30dp"
-        android:layout_marginBottom="20dp"
-        app:srcCompat="@drawable/add" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

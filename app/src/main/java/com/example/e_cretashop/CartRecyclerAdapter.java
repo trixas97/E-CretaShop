@@ -63,6 +63,12 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<CartRecyclerAdapte
         for(int i=0; i < cart.size(); i++){ if(cart.get(i).getProduct() == list.get(position).getId()) { holder.productquantity.setText(cart.get(i).getQuantity() + ""); }}
         float price = Integer.parseInt(holder.productquantity.getText().toString()) * list.get(position).getPrice();
 
+        if(MainActivity.Database.myDao().getProduct(cart.get(position).getProduct()).getStock() < cart.get(position).getQuantity())
+            OrderStep1Fragment.isSetError = 1;
+        else
+            OrderStep1Fragment.isSetError = 0;
+
+
         if(flag == 0) {
             holder.productquantityfinal.setVisibility(View.INVISIBLE);
             holder.productquantityfinalhint.setVisibility(View.INVISIBLE);
@@ -93,6 +99,8 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<CartRecyclerAdapte
         holder.productmername.setText(merchant.getSurname());
         holder.productprice.setText(price + "€");
         holder.productimage.setImageResource(list.get(position).getImg());
+
+
         holder.productquantity.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -114,6 +122,12 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<CartRecyclerAdapte
 
                     float price = Integer.parseInt(s.toString()) * list.get(position).getPrice();
                     holder.productprice.setText(price + "€");
+                    if(list.get(position).getStock() < Integer.parseInt(s.toString())){
+                        holder.productquantitylayout.setError("Δεν υπάρχει τόσο απόθεμα");
+                        OrderStep1Fragment.isSetError = 1;
+                    }
+                    else
+                        OrderStep1Fragment.isSetError = 0;
 
                     finalpriceparts = OrderStep1Fragment.cartfinalprice.getText().toString().split("€", 2);
                     finalprice = Float.parseFloat(finalpriceparts[0]) + price;
@@ -129,6 +143,9 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<CartRecyclerAdapte
                     finalprice = Float.parseFloat(finalpriceparts[0]) + list.get(position).getPrice();
                     OrderStep1Fragment.cartfinalprice.setText(finalprice + "€");
                 }
+                ConstraintLayout.LayoutParams lp = (ConstraintLayout.LayoutParams) OrderStep1Fragment.cartfinalprice.getLayoutParams();
+                lp.width = ConstraintLayout.LayoutParams.WRAP_CONTENT;
+                OrderStep1Fragment.cartfinalprice.setLayoutParams(lp);
             }
         });
 

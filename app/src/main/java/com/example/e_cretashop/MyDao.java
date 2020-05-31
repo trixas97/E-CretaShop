@@ -3,6 +3,7 @@ package com.example.e_cretashop;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -29,6 +30,12 @@ public interface MyDao {
     @Insert
     public void insertCart(Cart cart);
 
+    @Insert (onConflict = OnConflictStrategy.REPLACE)
+    public Long insertOrder(Order order);
+
+    @Insert ()
+    public void insertOrderProduct(OrderProduct order);
+
     @Update
     public void updateCategory(Category category);
 
@@ -41,6 +48,12 @@ public interface MyDao {
     @Update
     public void updateCart(Cart cart);
 
+    @Update
+    public void updateOrder(Order order);
+
+    @Update
+    public void updateOrderProduct(OrderProduct orderProduct);
+
     @Delete
     public void deleteProduct(Product product);
 
@@ -52,6 +65,12 @@ public interface MyDao {
 
     @Delete
     public void deleteCart(Cart cart);
+
+    @Delete
+    public void deleteOrder(Order order);
+
+    @Delete
+    public void deleteOrderProducts(OrderProduct order);
 
     @Query("select * from categories")
     public List<Category> getCategories();
@@ -92,8 +111,26 @@ public interface MyDao {
     @Query("select * from cart")
     public List<Cart> getCart();
 
+    @Query("delete from cart")
+    public void deleteCartAll();
+
     @Query("select * from cart where pid=:pid")
     public Cart getCartByProductId(int pid);
+
+    @Query("select * from orders")
+    public List<Order> getOrders();
+
+    @Query("select * from orders where id=:id")
+    public Order getOrderByOrderId(int id);
+
+    @Query("select * from ordersproducts")
+    public List<OrderProduct> getOrdersProducts();
+
+    @Query("select * from ordersproducts where pid=:id")
+    public List<OrderProduct> getOrdersProductsByProductId(int id);
+
+    @Query("select * from ordersproducts where oid=:id")
+    public List<OrderProduct> getOrdersProductsByOrderId(int id);
 
 
 }

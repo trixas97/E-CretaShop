@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -32,7 +33,7 @@ public class OrderStep1Fragment extends Fragment {
     private FloatingActionButton submit;
 
     private Fragment order2;
-
+    public static int isSetError;
 
     public OrderStep1Fragment() {
         // Required empty public constructor
@@ -49,7 +50,7 @@ public class OrderStep1Fragment extends Fragment {
         cartfinalprice = view.findViewById(R.id.cart_final_price);
 
         products = MainActivity.Database.myDao().getProducts();
-        cartfinalprice.setText("000000000");
+        cartfinalprice.setText("00000000");
         recyclerView = view.findViewById(R.id.cart_recyclerview);
         layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -68,7 +69,13 @@ public class OrderStep1Fragment extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainActivity.fragmentManager.beginTransaction().replace(R.id.frag_layout, order2).addToBackStack(null).commit();
+                if(MainActivity.Database.myDao().getCart().isEmpty())
+                    Toast.makeText(getActivity(), "Το καλάθι είναι άδειο", Toast.LENGTH_SHORT).show();
+                else
+                    if(isSetError == 1)
+                        Toast.makeText(getActivity(), "Δεν επαρκούν τα αποθέματα", Toast.LENGTH_SHORT).show();
+                    else
+                        MainActivity.fragmentManager.beginTransaction().replace(R.id.frag_layout, order2).addToBackStack(null).commit();
             }
         });
 

@@ -1,9 +1,14 @@
 package com.example.e_cretashop;
 
+import android.annotation.SuppressLint;
+import android.content.res.Resources;
+import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +38,7 @@ public class ProductFragment extends Fragment {
     private TextView prodmerchname;
     private TextView prodmerchphone;
     private TextView prodmerchregion;
+    private TextView prodstatus;
     private ImageView prodimg;
     private FloatingActionButton addcart;
     private Fragment fragcart;
@@ -57,6 +63,7 @@ public class ProductFragment extends Fragment {
         prodname = view.findViewById(R.id.prodif_name);
         prodprice = view.findViewById(R.id.prodif_price);
         prodimg = view.findViewById(R.id.prodif_img);
+        prodstatus = view.findViewById(R.id.prodif_status);
         prodcat = view.findViewById(R.id.prodif_cat);
         prodattr = view.findViewById(R.id.prodif_cat_attr);
         prodattrhint = view.findViewById(R.id.prodif_hint_cat_attr);
@@ -77,20 +84,44 @@ public class ProductFragment extends Fragment {
         prodmerchphone.setText(merchant.getPhone());
         prodmerchregion.setText(region.getName());
 
+
+
+        if(product.getStock() == 0) {
+            prodstatus.setText("Μη Διαθέσιμο");
+            prodstatus.setTextColor(Color.RED);
+        }
+        else {
+            if (product.getStock() < 5) {
+                prodstatus.setText("Μερικώς Διαθέσιμο");
+                prodstatus.setTextColor(Color.parseColor("#FFD300"));
+            }
+        }
         addcart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Cart cart = new Cart();
                 cart = MainActivity.Database.myDao().getCartByProductId(product.getId());
                 if(cart == null) {
-                    cart = new Cart();
-                    cart.setProduct(product.getId());
-                    cart.setQuantity(1);
-                    MainActivity.Database.myDao().insertCart(cart);
+                    if(product.getStock() > 0) {
+                        OrderStep1Fragment.isSetError = 0;
+                        cart = new Cart();
+                        cart.setProduct(product.getId());
+                        cart.setQuantity(1);
+                        MainActivity.Database.myDao().insertCart(cart);
+                    }
+                    else
+                        OrderStep1Fragment.isSetError = 1;
                 }
                 else{
-                    cart.setQuantity(cart.getQuantity() + 1);
-                    MainActivity.Database.myDao().updateCart(cart);
+                    if(MainActivity.Database.myDao().getProduct(cart.getProduct()).getStock() < cart.getQuantity()+1){
+//                        holder.productquantitylayout.setError("Δεν υπάρχει τόσο απόθεμα");
+                        OrderStep1Fragment.isSetError = 1;
+                    }
+                    else {
+                        OrderStep1Fragment.isSetError = 0;
+                        cart.setQuantity(cart.getQuantity() + 1);
+                        MainActivity.Database.myDao().updateCart(cart);
+                    }
                 }
                 Toast.makeText(getActivity(), "Προστέθηκε στο καλάθι!", Toast.LENGTH_LONG).show();
                 fragcart = new OrderStep1Fragment();
